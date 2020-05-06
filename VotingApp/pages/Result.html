@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<body>
+
+    <center>
+        <h1>RESULTS</h1>
+    </center>
+
+    <div id="piechart"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        var connection1 = new XMLHttpRequest();
+        var url = 'http://localhost:8080//displayResults';
+        console.log(url)
+        connection1.open('GET', url);
+        connection1.onload = function () {
+
+            data1 = JSON.parse(connection1.responseText);
+            console.log(data1)
+            candi1 = data1[0].candidateCount;
+            displayy(data1);
+            console.log()
+            console.log(candi1)
+
+        }
+        connection1.send();
+
+        (function() {
+
+        const idleDurationSecs = 20;    // X number of seconds
+        const redirectUrl = '../webpage.html';  // Redirect idle users to this URL
+        let idleTimeout; // variable to hold the timeout, do not modify
+
+        const resetIdleTimeout = function() {
+
+            // Clears the existing timeout
+            if(idleTimeout) clearTimeout(idleTimeout);
+
+            // Set a new idle timeout to load the redirectUrl after idleDurationSecs
+            idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+        };
+
+        // Init on page load
+        resetIdleTimeout();
+
+        // Reset the idle timeout on any of the events listed below
+        ['click', 'touchstart', 'mousemove'].forEach(evt => 
+            document.addEventListener(evt, resetIdleTimeout, false)
+        );
+
+         })();
+        function displayy(data2) {
+
+            // Load google charts
+            google.charts.load('current', { 'packages': ['corechart'] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            // Draw the chart and set the chart values
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Candidates', 'Votes'],
+                    ['Rahul Gandhi', data2[0].candidateCount],
+                    ['Mayawati', data2[1].candidateCount],
+                    ['Narendra Modi', data2[3].candidateCount],
+                    ['Mamata Banerjee', data2[2].candidateCount],
+
+                ]);
+
+                // Optional; add a title and set the width and height of the chart
+                var options = { 'title': 'Polling', 'width': 1000, 'height': 800 };
+
+                // Display the chart inside the <div> element with id="piechart"
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                chart.draw(data, options);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

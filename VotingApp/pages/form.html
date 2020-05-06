@@ -1,0 +1,59 @@
+<HTML>
+
+<head>
+    <link rel="stylesheet" href ="/VotingApp/static/css/main.css">
+    <script type="text/javascript" src="/VotingApp/static/js/insert.js"></script>
+
+</head>
+<body>
+
+    
+    <div class="container" background-color="lightblue">
+        
+        <h2>ELECT YOUR LEADER:</h2>
+        <label> Enter your first name &nbsp;</label><input type ="text" id="firstname"><br><br>
+        <label> Enter your last name &nbsp;</label><input type ="text" id="lastname"><br><br>
+        <label> Enter your phone no. &nbsp;</label><input type ="text" id="phoneno"><br><br>
+      <ul>
+      <li>
+        <input type="radio" id="f-option" name="selector" value="1">
+        <label for="f-option">Rahul Gandhi</label>
+        
+        <div class="check"></div>
+      </li>
+      
+      <li>
+        <input type="radio" id="s-option" name="selector" value="2">
+        <label for="s-option">Mayawati</label>
+        
+        <div class="check"><div class="inside"></div></div>
+      </li>
+      
+      <li>
+        <input type="radio" id="t-option" name="selector" value="3">
+        <label for="t-option">Mamata Banerjee</label>
+        
+        <div class="check"><div class="inside"></div></div>
+      </li>
+      <li>
+            <input type="radio" id="r-option" name="selector" value="4">
+            <label for="r-option">Narendra Modi</label>
+            
+            <div class="check"><div class="inside"></div></div>
+          </li>
+    </ul>
+    </div>
+    <center> 
+      <a onclick="insert()">
+      <img src="/VotingApp/static/images/images.png" >
+</a>
+    </a>
+    <!-- <input type="button" id="3" value="VOTE" onclick="insert()">  -->
+  </center>
+    
+    
+    <div class="signature">
+        <p>Made with <i class="much-heart"></i> by Ronak Yadav</p>
+    </div>
+    </body>
+</HTML>
